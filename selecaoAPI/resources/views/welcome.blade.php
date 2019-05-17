@@ -85,7 +85,11 @@
                 </div>
 
                 <div class="links">
-                    Aqui deverá aparecer as seleções!!!!!!!!!!!!!!!!
+                    @guest
+                        Bem vindo ao melhor site de seleção de bolsas do mundo! Faça Login para visualizar as seleções.
+                    @else
+                        O melhor site de seleção de bolsas do mundo!
+                    @endguest
                 </div>
             </div>
         </div>

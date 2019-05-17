@@ -14,16 +14,18 @@ class CriarTabelaSelecoesCandidatos extends Migration
     public function up()
     {
         Schema::create('selecoes_candidatos', function (Blueprint $table) {
-            $table->bigInteger('selecao')->unsigned();
-            $table->foreign('selecao')
+            $table->bigInteger('selecao_id')->unsigned();
+            $table->foreign('selecao_id')
                 ->references('id')
                 ->on('selecoes');
-            
-            $table->bigInteger('candidato')->unsigned();
-            $table->foreign('candidato')
-                ->references('numero_matricula')
-                ->on('candidatos');
-            $table->primary(['candidato','selecao']);
+            $table->bigInteger('candidato_id')->unsigned();
+            $table->foreign('candidato_id')
+                ->references('id')
+                ->on('users');
+            $table->primary(['selecao_id','candidato_id']);           
+            $table->float('CR_atual');
+            $table->float('CH_cumprida');
+            $table->integer('semestre_atual');
             $table->timestamps();
         });
     }
