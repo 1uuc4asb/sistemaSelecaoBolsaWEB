@@ -21,8 +21,9 @@
                     <a href="https://getbootstrap.com.br/docs/4.1/components/"> Usem e abusem de bootstrap! </a> <br/>
                     <a href="https://laravel.com/docs/5.8/blade"> Podem usar blade a vontade também! </a> <br/>
                     Qualquer coisa pergunta no grupo. Ainda vamos fazer a API e as actions.
-
-                    <table class="table">
+                    
+                    
+                     <table class="table">
                         <thead>
                             <tr>
                             <th scope="col">#</th>
@@ -32,12 +33,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td> Nome da seleção </td>
-                                <td> 20 </td>
-                                <td style="text-align: right;"> <button class="btn btn-primary"> Increver-se </button> </td>
-                            </tr>
+                    
+                    <?php
+                    class Banco extends SQLite3 {
+                        function __construct() {
+                            $this->open('/home/1uuc4asb/Desktop/sistemaSelecaoBolsaWEB/selecaoAPI/database/selecaoDatabase.db');
+                        }
+                    }
+                    $db = new Banco(); //Isso deve fazer a conexão com o banco pra puxar os regsitros da tabela 'selecoes'
+                    if(!$db) echo $db->lastErrorMsg(); //Essa mensagem de erro aparece?
+                            
+                            /*
+                            o while seria mais ou menos assim, tem que ver ainda o número de participantes.
+                            O botão inscrever-se seria um link pro form de inscrição passando o id da seleção.
+                            */
+                            $select ='SELECT * from selecoes;';
+                            $ret = $db->query($select);
+				            while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
+					            $nome = $row['nome'];
+                                $id = $row['id'];
+					            echo "<tr><th scope='row'>$id</th>
+                                <td>$nome</td>
+                                <td> qtd </td>
+                                <td style='text-align: right;'> <button class='btn btn-primary'> Increver-se </button> </td></tr>";
+				             }
+                          ?>
+                            
                         </tbody>
                     </table>
                 </div>
