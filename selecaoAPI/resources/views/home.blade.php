@@ -50,12 +50,18 @@
                             $select ='SELECT * from selecoes;';
                             $ret = $db->query($select);
 				            while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
-                                
 					            $nome = $row['nome'];
                                 $id = $row['id'];
+                                
+                                //Faz a contagem de todas ocorrências do id da seleção na tabela selecoes_candidatos.
+                                $count = 'SELECT count(*) as total from selecoes_candidatos where selecao_id ='. $id;
+				                $retc = $db->query($count);
+				                $res = $retc->fetchArray(SQLITE3_ASSOC);
+                                $qtd = $res['total'];
+                
 					            echo "<tr><th scope='row'>$id</th>
                                 <td>$nome</td>
-                                <td> qtd </td>
+                                <td>$qtd</td>
                                 <td style='text-align: right;'> <button type='submit' formaction='inscricaoSelecao.blade.php?id=$id' class='btn btn-primary'> Increver-se </button> </td></tr>";
 				             }
                           ?>
