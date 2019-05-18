@@ -23,7 +23,6 @@ Route::get('/', function () {
     return response()->json(['message' => 'Selecao API', 'status' => 'Connected']);;
 });
 
-Route::resource('users', 'UsersController');
+Route::resource('usuarios', 'UsersController');
 Route::resource('selecoes', 'SelecoesController');
-Route::resource('informacoesCandidatos', 'InformacoesCandidatosController');
 Route::resource('selecoesCandidatos', 'SelecoesCandidatosController');
