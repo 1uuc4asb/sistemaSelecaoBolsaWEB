@@ -22,16 +22,8 @@
                     <a href="https://laravel.com/docs/5.8/blade"> Podem usar blade a vontade também! </a> <br/>
                     Qualquer coisa pergunta no grupo. Ainda vamos fazer a API e as actions.
                     
-                    //Não precisa de tags <?php .... ?> ?
-                    class Banco extends SQLite3 {
-                        function __construct() {
-                            $this->open('/home/1uuc4asb/Desktop/sistemaSelecaoBolsaWEB/selecaoAPI/database/selecaoDatabase.db');
-                        }
-                    }
-                    $db = new Banco(); //Isso deve fazer a conexão com o banco pra puxar os regsitros da tabela 'selecoes'
-                    if(!$db) echo $db->lastErrorMsg(); //Essa mensagem de erro aparece?
-
-                    <table class="table">
+                    
+                     <table class="table">
                         <thead>
                             <tr>
                             <th scope="col">#</th>
@@ -41,6 +33,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                    
+                    <?php
+                    class Banco extends SQLite3 {
+                        function __construct() {
+                            $this->open('/home/1uuc4asb/Desktop/sistemaSelecaoBolsaWEB/selecaoAPI/database/selecaoDatabase.db');
+                        }
+                    }
+                    $db = new Banco(); //Isso deve fazer a conexão com o banco pra puxar os regsitros da tabela 'selecoes'
+                    if(!$db) echo $db->lastErrorMsg(); //Essa mensagem de erro aparece?
                             
                             /*
                             o while seria mais ou menos assim, tem que ver ainda o número de participantes.
@@ -56,6 +57,7 @@
                                 <td> qtd </td>
                                 <td style="text-align: right;"> <button class="btn btn-primary"> Increver-se </button> </td></tr>";
 				             }
+                          ?>
                             
                         </tbody>
                     </table>
