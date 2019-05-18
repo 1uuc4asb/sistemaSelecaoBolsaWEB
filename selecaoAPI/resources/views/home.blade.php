@@ -52,10 +52,10 @@
 				            while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
 					            $nome = $row['nome'];
                                 $id = $row['id'];
-					            echo "<tr><th scope="row">$id</th>
+					            echo "<tr><th scope='row'>$id</th>
                                 <td>$nome</td>
                                 <td> qtd </td>
-                                <td style="text-align: right;"> <button class="btn btn-primary"> Increver-se </button> </td></tr>";
+                                <td style='text-align: right;'> <button class='btn btn-primary'> Increver-se </button> </td></tr>";
 				             }
                           ?>
                             
