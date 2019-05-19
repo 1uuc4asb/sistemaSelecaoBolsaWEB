@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         {{ $mensagem }}
-        <form>
+        <form name="formSelecaoBolsa" method="post" action=" ">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Nome Seleção">
             </div>
