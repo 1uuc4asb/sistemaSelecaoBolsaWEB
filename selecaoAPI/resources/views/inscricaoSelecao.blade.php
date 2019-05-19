@@ -38,10 +38,30 @@
                   <input type="reset" class="btn btn-primary" value="Limpar">
             </div>
         </form>
+        <!-- validação básica do formulário -->
         <script type="text/javascript">
 		    function validaform(form){
+				var CH = document.getElementById("CH");
+				var CR = document.getElementById("CR");
+				var semestre = document.getElementById("semestre");
+				
+				if(teste(CH,"Carga horária cumprida")==false)return false;
+				if(teste(CR,"Coeficiente de rendimento")==false)return false;
+				if(teste(semestre,"Semestre atual")==false)return false;
+				
             form.submit();
             }
+			function teste(campo,texto){
+				if (campo.value==""){
+					alerta(texto);
+					campo.focus();
+					return false;
+				}
+				return true;
+			}
+			function alerta(texto){
+				alert ("Campo "+texto+" é obrigatório.");
+			}
         </script>
     </div>
 </div>
