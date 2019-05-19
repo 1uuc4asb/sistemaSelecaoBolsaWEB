@@ -16,7 +16,8 @@
         </div>
     @endif
     <div class="row justify-content-center">
-        <form>
+    <!--o lavavel não tá configurado pra suportar post. como os formulários serão enviados???-->
+        <form  name="formInscricaoSelecao" method="post" action=" ">
             <div class="form-group">
                 <div class="row justify-content-center">
                     <input type="text" class="form-control" placeholder="Carga horária cumprida">
@@ -33,9 +34,15 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <button type="submit" class="btn btn-primary" style="align-content: center;">Submit</button>
+                  <input type="button" class="btn btn-primary" value="Enviar" onclick="validaform(this.form)">&nbsp;&nbsp;
+                  <input type="reset" class="btn btn-primary" value="Limpar">
             </div>
         </form>
+        <script type="text/javascript">
+		    function validaform(form){
+            form.submit();
+            }
+        </script>
     </div>
 </div>
 @endsection
