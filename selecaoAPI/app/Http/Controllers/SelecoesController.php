@@ -25,6 +25,19 @@ class SelecoesController extends Controller
         return response()->json($selecoes, 200, $headers);
     }
 
+    public function returnDataToTable() {
+        while($linha != null)
+            echo '<tr>';
+                echo '<td>'. $selecoes= DB::table('selecoes')
+                ->select('selecoes.id').'</td>';
+                echo '<td>'. $selecoes= DB::table('selecoes')
+                ->select('selecoes.nome').'</td>';
+                /*echo '<td>'. $selecoes= DB::table('selecoes')
+                *->select('selecoes.id').'</td>';
+                * Inserir na tabela quantidade de usuários cadastrados na seleção para retorno na tela home.
+                */
+            echo '</tr>'; 
+    }
     public function show($id) {
         $selecao = DB::table('selecoes')
                         ->where('selecoes.id','=',$id)
