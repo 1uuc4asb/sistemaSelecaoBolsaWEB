@@ -20,17 +20,17 @@
         <form  name="formInscricaoSelecao" method="post" action=" ">
             <div class="form-group">
                 <div class="row justify-content-center">
-                    <input type="text" class="form-control" placeholder="Carga horária cumprida">
+                    <input type="number" class="form-control" placeholder="Carga horária cumprida">
                 </div>
             </div>
             <div class="form-group">
                 <div class="row justify-content-center">
-                    <input type="text" class="form-control" placeholder="Coeficiente de rendimento">
+                    <input type="number" class="form-control" placeholder="Coeficiente de rendimento">
                 </div>
             </div>
             <div class="form-group">
                 <div class="row justify-content-center">
-                    <input type="text" class="form-control" placeholder="Semestre Atual">
+                    <input type="number" class="form-control" placeholder="Semestre Atual">
                 </div>
             </div>
             <div class="row justify-content-center">
