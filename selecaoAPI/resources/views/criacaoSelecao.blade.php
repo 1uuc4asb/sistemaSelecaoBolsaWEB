@@ -52,8 +52,14 @@
                     </div>
                 </div>
             </fieldset>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="button" class="btn btn-primary" value="Enviar" onclick="validaform(this.form)>
+            <input type="reset" class="btn btn-primary" value="Limpar">
         </form>
+        <script type="text/javascript">
+		    function validaform(form){
+            form.submit();
+            }
+        </script>
     </div>
 </div>
 @endsection
