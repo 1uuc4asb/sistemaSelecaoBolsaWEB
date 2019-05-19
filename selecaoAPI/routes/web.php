@@ -18,4 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('inscricaoSelecao', 'InscricaoSelecaoController');
+Route::resource('inscricaoSelecao', 'InscricaoSelecaoController',[
+    'names' => [
+        'show' => 'inscricaoSelecaoShow'
+    ]
+]);
