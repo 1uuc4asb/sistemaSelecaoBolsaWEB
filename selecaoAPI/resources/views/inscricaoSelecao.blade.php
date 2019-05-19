@@ -2,19 +2,39 @@
 
 @section('content')
 <div class="container">
+    @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+                <a href="{{ url('/home') }}">Home</a>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}">Register</a>
+                @endif
+            @endauth
+        </div>
+    @endif
     <div class="row justify-content-center">
-        {{ $mensagem }}
         <form>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="CH - Carga horária cumprida">
+                <div class="row justify-content-center">
+                    <input type="text" class="form-control" placeholder="Carga horária cumprida">
+                </div>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="CR - Coeficiente de rendimento">
+                <div class="row justify-content-center">
+                    <input type="text" class="form-control" placeholder="Coeficiente de rendimento">
+                </div>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Semestre Atual">
+                <div class="row justify-content-center">
+                    <input type="text" class="form-control" placeholder="Semestre Atual">
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-primary" style="align-content: center;">Submit</button>
+            </div>
         </form>
     </div>
 </div>
