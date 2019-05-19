@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </fieldset>
-            <input type="button" class="btn btn-primary" value="Enviar" onclick="validaform(this.form)>
+            <input type="button" class="btn btn-primary" value="Enviar" onclick="validaform(this.form)">
             <input type="reset" class="btn btn-primary" value="Limpar">
         </form>
         <script type="text/javascript">
