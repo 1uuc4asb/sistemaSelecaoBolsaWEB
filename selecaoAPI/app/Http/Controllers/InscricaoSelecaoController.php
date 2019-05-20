@@ -35,17 +35,23 @@ class InscricaoSelecaoController extends Controller
     $inscricao = $request->all();
     $user = Auth::user();
 
-    if ($this->validarFormulario($inscricao)) {
-      $array = ['selecao_id' => $inscricao['inscricao'], 'semestre_atual' => $inscricao['semestre'],
-        'CH_cumprida' => $inscricao['CH'], 'CR_atual' => $inscricao['CR'], 'candidato_id' => $user->id];
-      $create = SelecoesCandidatos::create($array);
-      if ($create) {
-        return Redirect::route('home');
+    if ($this->validarFormulario($inscricao, $user)) {
+      if (SelecoesCandidatos::where('candidato_id', '=', $user->id)->where('selecao_id', '=', $inscricao['inscricao'])->get()->count() == 0) {
+        $array = ['selecao_id' => $inscricao['inscricao'], 'semestre_atual' => $inscricao['semestre'],
+          'CH_cumprida' => $inscricao['CH'], 'CR_atual' => $inscricao['CR'], 'candidato_id' => $user->id];
+        $create = SelecoesCandidatos::create($array);
+        if ($create) {
+          return Redirect::route('home');
+        }
+      } else {
+        return Response::json('Voce nao pode se cadastrar duas vezes na mesma selecao!');
       }
+    } else {
+      return Response::json('Dados incorretos!');
     }
   }
 
-  public function validarFormulario($data)
+  public function validarFormulario($data, $user)
   {
     return Validator::make($data, ['CR' => 'required|numeric',
       'CH' => 'required|numeric',
