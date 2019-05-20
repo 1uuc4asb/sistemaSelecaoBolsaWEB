@@ -24,3 +24,6 @@ Route::resource('inscricaoSelecao', 'InscricaoSelecaoController', [
     'store' => 'inscricaoSelecaoStore'
   ]
 ]);
+
+Route::get('/create-selecao', 'SelecoesController@renderform');
+Route::post('/create-selecao', 'SelecoesController@create');

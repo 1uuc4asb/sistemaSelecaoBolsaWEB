@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Selecao;
@@ -95,5 +97,39 @@ class SelecoesController extends Controller
         } catch (Exception $e) {
             throw $e;
         }
+    }
+
+    public function create(Request $request){
+        $validator = Validator::make($request->all(), [
+            'dono_da_selecao' => ['required','exists:users,id'],
+            'nome' => ['required'],
+            'data_do_resultado' => ['required','date', 'date_format:Y-m-d H:i:s'],
+            'parametro_de_comparacao' => ['required', Rule::in(['CH', 'CR','SEMESTRE','ALFABETICA_NOME','ALFABETICA_CURSO','IDADE']),]
+        ],
+            [
+                'required' => 'O atributo :attribute é obrigatório',
+                'dono_da_selecao.exists' => 'O ID passado não pertence a nenhum usuário.',
+                'date' => 'O atributo :attribute deve ser do tipo data. Ou escrito no formato "dia-mes-ano horas:minutos:segundos"',
+                'parametro_de_comparacao.in' => "O parametro de comparação deve ser um desses: ['CH', 'CR','SEMESTRE','ALFABETICA_NOME','ALFABETICA_CURSO','IDADE'] "
+            ]);
+        if($validator->fails()) {
+            return redirect()->action('SelecoesController@renderform')
+                ->withErrors($validator)
+                ->withInput();
+        }else{
+            $selecao = new Selecao();
+            $selecao->fill($request->all());
+            $selecao->save();
+
+            return redirect()->action('HomeController@index');
+        }
+    }
+
+    public function renderform(){
+        $selecao = new Selecao(['dono_da_selecao' => Auth::id()]);
+
+        return view('criacaoSelecao', [
+            'selecao' => $selecao
+        ]);
     }
 }
