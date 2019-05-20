@@ -38,7 +38,7 @@ class SelecoesController extends Controller
                 *->select('selecoes.id').'</td>';
                 * Inserir na tabela quantidade de usuários cadastrados na seleção para retorno na tela home.
                 */
-            echo '</tr>'; 
+            echo '</tr>';
     }
     public function show($id) {
         $selecao = DB::table('selecoes')
@@ -59,7 +59,7 @@ class SelecoesController extends Controller
             return response()->json($data, 404,$headers);
         }
         //TODO Se a seleção acabou, resolver vencedor e dar resposta =D
-        
+
         return response()->json($selecao,200,$headers);
     }
 
@@ -86,7 +86,7 @@ class SelecoesController extends Controller
                 array(
                     'dono_da_selecao' => $request->input('dono_da_selecao'),
                     'nome' => $request->input('nome'),
-                    'data_do_resultado' => new Datetime($request->input('data_do_resultado')),
+                    'data_do_resultado' => Carbon::parse($request->input('data_do_resultado')->format('Y-m-d H:i:s')),
                     'parametro_de_comparacao' => $request->input('parametro_de_comparacao')
                 )
             );
@@ -103,7 +103,7 @@ class SelecoesController extends Controller
         $validator = Validator::make($request->all(), [
             'dono_da_selecao' => ['required','exists:users,id'],
             'nome' => ['required'],
-            'data_do_resultado' => ['required','date', 'date_format:Y-m-d H:i:s'],
+            'data_do_resultado' => ['required','date'],
             'parametro_de_comparacao' => ['required', Rule::in(['CH', 'CR','SEMESTRE','ALFABETICA_NOME','ALFABETICA_CURSO','IDADE']),]
         ],
             [

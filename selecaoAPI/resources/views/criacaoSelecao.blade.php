@@ -24,11 +24,11 @@
                             <input type="hidden" name="dono_da_selecao" value="{{\Illuminate\Support\Facades\Auth::id()}}">
                             <div class="form-group">
                                 <label for="nome">Nome da seleção</label>
-                                <input type="text" class="form-control" name="nome" placeholder="Nome Seleção" value="{{old('nome')}}">
+                                <input type="text" class="form-control" name="nome" placeholder="Nome Seleção" value="{{old('nome')}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Data de encerramento</label>
-                                <input type='text' class="form-control" name="data_do_resultado" value="{{old('data_do_resultado')}}">
+                                <input type='date' class="form-control" name="data_do_resultado" value="{{old('data_do_resultado')}}" required>
                             </div>
                             <fieldset class="form-group">
                                 <div class="row">
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                             </fieldset>
-                            <input type="button" class="btn btn-primary" value="Enviar" onclick="validaform(this.form)">&nbsp;&nbsp;
+                            <input type="submit" class="btn btn-primary" value="Enviar">&nbsp;&nbsp;
                             <input type="reset" class="btn btn-primary" value="Limpar">
                         </form>
                     </div>
@@ -62,8 +62,4 @@
     $(function () {
         $('#datetimepicker1').datetimepicker();
     });
-
-    function validaform(form) {
-        form.submit();
-    }
 </script>
