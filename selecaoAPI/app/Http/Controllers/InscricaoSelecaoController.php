@@ -49,6 +49,6 @@ class InscricaoSelecaoController extends Controller
     */
     return Validator::make($data, ['CR' => 'required|numeric',
       'CH' => 'required|numeric',
-      'semestre' => 'required|numeric']);
+      'semestre' => 'required|integer']);
   }
 }
