@@ -13,13 +13,16 @@
                             </div>
                         @endif
                         Aqui a listagem das seleções do usuário (dono da seleção) logado. <br/><br/>
-                        <a class="btn btn-primary" href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@renderform')}}"> Criar Seleção </a> <br/> <br/>
+                        <a class="btn btn-primary"
+                           href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@renderform')}}"> Criar
+                            Seleção </a> <br/> <br/>
                         <table class="table">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Seleção</th>
                                 <th scope="col">Número de participantes</th>
+                                <th scope="col">Data de encerramento</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -28,6 +31,8 @@
                                     <th scope="row"> {{ $selecao->id }} </th>
                                     <td> {{ $selecao->nome }} </td>
                                     <td> {{$selecao->getEntradas()}}</td>
+                                    <td> {{ \Carbon\Carbon::parse($selecao->data_do_resultado)->format('d/m/Y')}}</td>
+
                                 </tr>
                             @endforeach
                             </tbody>
@@ -60,7 +65,9 @@
                                         <td> {{ \Carbon\Carbon::parse($selecao->data_do_resultado)->format('d/m/Y')}}</td>
                                         <td>
                                             @if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0)
-                                                <a class="btn btn-primary" href="{{ route('inscricaoSelecaoShow',$selecao->id) }}"> Inscrever-se </a>
+                                                <a class="btn btn-primary"
+                                                   href="{{ route('inscricaoSelecaoShow',$selecao->id) }}">
+                                                    Inscrever-se </a>
                                             @else
                                                 <span style="padding: 6px; background-color: #2fa360; color: white; border-radius: 5px;">Inscrito</span>
                                             @endif
