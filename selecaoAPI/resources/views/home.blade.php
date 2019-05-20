@@ -47,6 +47,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Seleção</th>
                                     <th scope="col">Número de participantes</th>
+                                    <th scope="col">Data de encerramento</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
@@ -56,6 +57,7 @@
                                         <th scope="row"> {{ $selecao->id }} </th>
                                         <td> {{ $selecao->nome }} </td>
                                         <td> {{$selecao->getEntradas()}}</td>
+                                        <td> {{ \Carbon\Carbon::parse($selecao->data_do_resultado)->format('d/m/Y')}}</td>
                                         <td>
                                             @if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0)
                                                 <a class="btn btn-primary" href="{{ route('inscricaoSelecaoShow',$selecao->id) }}"> Inscrever-se </a>
