@@ -59,6 +59,8 @@
                                         <td>
                                             @if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0)
                                                 <a class="btn btn-primary" href="{{ route('inscricaoSelecaoShow',$selecao->id) }}"> Inscrever-se </a>
+                                            @else
+                                                <span style="padding: 6px; background-color: #2fa360; color: white; border-radius: 5px;">Inscrito</span>
                                             @endif
                                         </td>
                                     </tr>
