@@ -41,12 +41,7 @@
                 </div>
             <div class="card">
                 <div class="card-header"> Todas as Seleções </div>
-                Criem e coloquem scripts na pasta /public/js. <br/>
-                Criem e coloquem estilos na pasta /public/css. <br/>
-                Importem os dois aqui mesmo (Me refiro dentro da view) com tags html &lt;link/&gt; e &lt;script/&gt; . <br/>
-                <a href="https://getbootstrap.com.br/docs/4.1/components/"> Usem e abusem de bootstrap! </a> <br/>
-                <a href="https://laravel.com/docs/5.8/blade"> Podem usar blade a vontade também! </a> <br/>
-
+                
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -55,7 +50,11 @@
                     @endif
 
                     Aqui a listagem de todas as seleções. <br/> <br/>
-                 
+                    Criem e coloquem scripts na pasta /public/js. <br/>
+                    Criem e coloquem estilos na pasta /public/css. <br/>
+                    Importem os dois aqui mesmo (Me refiro dentro da view) com tags html &lt;link/&gt; e &lt;script/&gt; . <br/>
+                    <a href="https://getbootstrap.com.br/docs/4.1/components/"> Usem e abusem de bootstrap! </a> <br/>
+                    <a href="https://laravel.com/docs/5.8/blade"> Podem usar blade a vontade também! </a> <br/>
                      <table class="table">
                         <thead>
                             <tr>
