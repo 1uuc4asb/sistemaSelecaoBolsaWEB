@@ -9,10 +9,14 @@ class Selecao extends Model
     protected $table = 'selecoes';
 
     protected $fillable = [
-        'dono_da_selecao','nome','data_do_resultado','parametro_de_comparacao'
+        'dono_da_selecao', 'nome', 'data_do_resultado', 'parametro_de_comparacao'
     ];
 
     protected $casts = [
         'data_do_resultado' => 'datetime'
     ];
+
+    public function getEntradas(){
+        return SelecoesCandidatos::where('selecao_id', $this->id)->count();
+    }
 }
