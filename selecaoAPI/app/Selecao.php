@@ -2,21 +2,31 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Selecao extends Model
 {
-    protected $table = 'selecoes';
+  protected $table = 'selecoes';
 
-    protected $fillable = [
-        'dono_da_selecao', 'nome', 'data_do_resultado', 'parametro_de_comparacao'
-    ];
+  protected $fillable = [
+    'dono_da_selecao', 'nome', 'data_do_resultado', 'parametro_de_comparacao'
+  ];
 
-    protected $casts = [
-        'data_do_resultado' => 'datetime'
-    ];
+  protected $casts = [
+    'data_do_resultado' => 'datetime'
+  ];
 
-    public function getEntradas(){
-        return SelecoesCandidatos::where('selecao_id', $this->id)->count();
-    }
+  public function getEntradas()
+  {
+    return SelecoesCandidatos::where('selecao_id', $this->id)->count();
+  }
+
+  /** Verifica se já passou da data do resultado da seleção
+   * @return bool
+   */
+  public function isFinished()
+  {
+    return Carbon::parse(Selecao::where('id', '=', $this->id)->select('data_do_resultado')->first())->isBefore(Carbon::today());
+  }
 }
