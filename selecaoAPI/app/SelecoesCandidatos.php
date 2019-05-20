@@ -13,4 +13,6 @@ class SelecoesCandidatos extends Model
     protected $fillable = [
         'selecao_id','candidato_id','CR_atual','CH_cumprida','semestre_atual'
     ];
+
+
 }

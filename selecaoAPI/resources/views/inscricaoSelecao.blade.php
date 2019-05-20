@@ -21,13 +21,13 @@
                 @csrf
                 <div class="form-group">
                     <div class="row justify-content-center">
-                        <input type="number" name="CH" id="CH" class="form-control"
+                        <input type="number" step=".01" name="CH" id="CH" class="form-control"
                                placeholder="Carga horária cumprida" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row justify-content-center">
-                        <input type="number" name="CR" id="CR" class="form-control"
+                        <input type="number" step=".01" name="CR" id="CR" class="form-control"
                                placeholder="Coeficiente de rendimento" required>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                                placeholder="Semestre Atual" required>
                     </div>
                 </div>
-                <input type="hidden" name="inscricao" value="">
+                <input type="hidden" name="inscricao" value="{{$id}}">
                 <div class="row justify-content-center">
                     <input type="submit" class="btn btn-primary" value="Enviar">&nbsp;&nbsp;
                     <input type="reset" class="btn btn-primary" value="Limpar">
