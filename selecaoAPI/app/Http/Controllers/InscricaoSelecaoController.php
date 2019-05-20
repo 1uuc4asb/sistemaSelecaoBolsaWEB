@@ -26,16 +26,17 @@ class InscricaoSelecaoController extends Controller
         return view('inscricaoSelecao', $data);
     }
 
-    public function store($data) {
+    public function store(Request $request) {
+
+      $inscricao = $request->all();
+      print_r($inscricao);die;
         /*
             TODO
                 Verificar dados do formulário passado pelo front e guardar dados no banco.
                 Tabela selecoescandidatos =D
         */
-        if(validarFormulario()) {
-            /*
-                Verificar se formulario foi validado ou não. https://laravel.com/docs/5.8/validation
-            */
+        if($this->validarFormulario($data)) {
+
         }
     }
 
