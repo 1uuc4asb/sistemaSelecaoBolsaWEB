@@ -56,7 +56,11 @@
                                         <th scope="row"> {{ $selecao->id }} </th>
                                         <td> {{ $selecao->nome }} </td>
                                         <td> {{$selecao->getEntradas()}}</td>
-                                        <td><a class="btn btn-primary" href="{{ route('inscricaoSelecaoShow',$selecao->id) }}"> Inscrever-se </a></td>
+                                        <td>
+                                            @if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0)
+                                                <a class="btn btn-primary" href="{{ route('inscricaoSelecaoShow',$selecao->id) }}"> Inscrever-se </a>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
