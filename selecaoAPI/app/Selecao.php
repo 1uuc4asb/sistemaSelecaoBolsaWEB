@@ -27,6 +27,6 @@ class Selecao extends Model
      */
     public function isFinished($id)
     {
-        return Carbon::parse(Selecao::where('id', '=', $id)->select('data_do_resultado')->first()->data_do_resultado)->isBefore(Carbon::today());
+        return Carbon::parse(Selecao::where('id', '=', $id)->select('data_do_resultado')->first()->data_do_resultado)->lessThanOrEqualTo(Carbon::today());
     }
 }
