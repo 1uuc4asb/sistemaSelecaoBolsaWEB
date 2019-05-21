@@ -136,7 +136,8 @@ class SelecoesController extends Controller
 
     public function mostraresultado($id){
         $selecao = Selecao::findOrFail($id);
-        $inscricoes = SelecoesCandidatos::where('selecao_id', $selecao->id);
+        $inscricoes = SelecoesCandidatos::where('selecao_id', $selecao->id)
+        ->join('users', 'candidato_id', '=', 'users.id');
 
         switch($selecao->parametro_de_comparacao){
             case 'CH':{
