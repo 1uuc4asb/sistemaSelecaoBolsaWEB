@@ -23,6 +23,7 @@
                                 <th scope="col">Seleção</th>
                                 <th scope="col">Número de participantes</th>
                                 <th scope="col">Data de encerramento</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -32,7 +33,17 @@
                                     <td> {{ $selecao->nome }} </td>
                                     <td> {{$selecao->getEntradas()}}</td>
                                     <td> {{ \Carbon\Carbon::parse($selecao->data_do_resultado)->format('d/m/Y')}}</td>
-
+                                    <td>
+                                        @if($selecao->isFinished())
+                                            <a class="btn btn-warning"
+                                               href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@mostraresultado', ['id' => $selecao->id])}}">
+                                                Resultado parcial </a>
+                                        @else
+                                            <a class="btn btn-success"
+                                               href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@mostraresultado', ['id' => $selecao->id])}}">
+                                                Resultado final </a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -64,10 +75,15 @@
                                         <td> {{$selecao->getEntradas()}}</td>
                                         <td> {{ \Carbon\Carbon::parse($selecao->data_do_resultado)->format('d/m/Y')}}</td>
                                         <td>
-                                            @if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0)
+                                            @if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0
+                                            && $selecao->isFinished())
                                                 <a class="btn btn-primary"
                                                    href="{{ route('inscricaoSelecaoShow',$selecao->id) }}">
                                                     Inscrever-se </a>
+                                            @elseif(!$selecao->isFinished())
+                                                <a class="btn btn-danger"
+                                                   href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@mostraresultado', ['id' => $selecao->id])}}">
+                                                    Resultado </a>
                                             @else
                                                 <span style="padding: 6px; background-color: #2fa360; color: white; border-radius: 5px;">Inscrito</span>
                                             @endif
