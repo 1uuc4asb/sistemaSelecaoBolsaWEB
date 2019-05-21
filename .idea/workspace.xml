@@ -68,9 +68,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/selecaoAPI/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+            <state relative-caret-position="373">
+              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/selecaoAPI/config/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2281" />
           </provider>
         </entry>
       </file>
@@ -112,18 +119,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/selecaoAPI/app/Selecao.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="65" selection-start-line="12" selection-start-column="65" selection-end-line="12" selection-end-column="65" />
-              <folding>
-                <element signature="e#23#41#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/selecaoAPI/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
@@ -146,6 +141,7 @@
       <find>z</find>
       <find>login</find>
       <find>register</find>
+      <find>Laravel</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -284,30 +280,7 @@
               <item name="sistemaSelecaoBolsaWEB" type="b2602c69:ProjectViewProjectNode" />
               <item name="sistemaSelecaoBolsaWEB" type="462c0819:PsiDirectoryNode" />
               <item name="selecaoAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sistemaSelecaoBolsaWEB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sistemaSelecaoBolsaWEB" type="462c0819:PsiDirectoryNode" />
-              <item name="selecaoAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sistemaSelecaoBolsaWEB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sistemaSelecaoBolsaWEB" type="462c0819:PsiDirectoryNode" />
-              <item name="selecaoAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sistemaSelecaoBolsaWEB" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sistemaSelecaoBolsaWEB" type="462c0819:PsiDirectoryNode" />
-              <item name="selecaoAPI" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sistemaSelecaoBolsaWEB" type="b2602c69:ProjectViewProjectNode" />
@@ -431,12 +404,12 @@
       <workItem from="1558373181099" duration="1197000" />
       <workItem from="1558379053500" duration="299000" />
       <workItem from="1558459032593" duration="81000" />
-      <workItem from="1558471050180" duration="1475000" />
+      <workItem from="1558471050180" duration="1597000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16646000" />
+    <option name="totallyTimeSpent" value="16768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="23" width="1920" height="977" extended-state="0" />
@@ -712,10 +685,15 @@
         <state relative-caret-position="-6679" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/selecaoAPI/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2281" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/selecaoAPI/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        <state relative-caret-position="373">
+          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
         </state>
       </provider>
     </entry>
