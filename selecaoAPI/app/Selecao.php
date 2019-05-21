@@ -25,8 +25,8 @@ class Selecao extends Model
   /** Verifica se já passou da data do resultado da seleção
    * @return bool
    */
-  public function isFinished()
+  public function isFinished($id)
   {
-    return Carbon::parse(Selecao::where('id', '=', $this->id)->select('data_do_resultado')->first())->isBefore(Carbon::today());
+    return Carbon::parse(Selecao::where('id', '=', $id)->select('data_do_resultado')->first())->isBefore(Carbon::today());
   }
 }
