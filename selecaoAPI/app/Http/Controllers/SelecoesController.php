@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SelecoesCandidatos;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -130,6 +131,30 @@ class SelecoesController extends Controller
 
         return view('criacaoSelecao', [
             'selecao' => $selecao
+        ]);
+    }
+
+    public function mostraresultado($id){
+        $selecao = Selecao::findOrFail($id);
+        $inscricoes = SelecoesCandidatos::where('selecao_id', $selecao->id);
+
+        switch($selecao->parametro_de_comparacao){
+            case 'CH':{
+                $inscricoes->orderBy('CH_cumprida', 'DESC');
+                break;
+            }
+            case 'CR';{
+                $inscricoes->orderBy('CR_atual', 'DESC');
+                break;
+            }
+            default:{
+                $inscricoes->orderBy('semestre_atual', 'DESC');
+            }
+        }
+
+        return view('resultado', [
+            'selecao' => $selecao,
+            'inscricoes' => $inscricoes->get()
         ]);
     }
 }
