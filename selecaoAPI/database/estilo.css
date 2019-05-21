@@ -1,0 +1,13 @@
+
+body{
+	font-family:"Lucida Console", Monaco, monospace;
+	font-size: 14px;
+}
+#main{
+	float: left;
+	padding: 10px;
+}
+th, td {
+	border-bottom: 1px dashed  black;
+	padding: 5px;
+}
