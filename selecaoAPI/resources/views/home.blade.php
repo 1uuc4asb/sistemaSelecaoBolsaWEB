@@ -75,17 +75,20 @@
                                         <td> {{$selecao->getEntradas()}}</td>
                                         <td> {{ \Carbon\Carbon::parse($selecao->data_do_resultado)->format('d/m/Y')}}</td>
                                         <td>
-                                            @if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0
-                                            && !$selecao->isFinished($selecao->id))
-                                                <a class="btn btn-primary"
-                                                   href="{{ route('inscricaoSelecaoShow',$selecao->id) }}">
-                                                    Inscrever-se </a>
-                                            @elseif($selecao->isFinished($selecao->id))
+                                            @if(Auth::user()->flag_candidato)
+												@if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0 && !$selecao->isFinished($selecao->id))
+													<a class="btn btn-primary" href="{{ route('inscricaoSelecaoShow',$selecao->id) }}">Inscrever-se </a>
+												@elseif($selecao->isFinished($selecao->id))
                                                 <a class="btn btn-danger"
                                                    href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@mostraresultado', ['id' => $selecao->id])}}">
                                                     Resultado </a>
-                                            @else
-                                                <span style="padding: 6px; background-color: #2fa360; color: white; border-radius: 5px;">Inscrito</span>
+												@else
+													<span style="padding: 6px; background-color: #2fa360; color: white; border-radius: 5px;">Inscrito</span>
+												@endif
+											@elseif($selecao->isFinished($selecao->id))
+                                                <a class="btn btn-danger"
+                                                   href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@mostraresultado', ['id' => $selecao->id])}}">
+                                                    Resultado </a>
                                             @endif
                                         </td>
                                     </tr>
