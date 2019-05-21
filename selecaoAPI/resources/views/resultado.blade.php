@@ -10,11 +10,11 @@
         <thead>
         <tr>
             <th>
-                Nome
+                Nome do candidato
             </th>
 
             <th>
-                Semestre
+                Semestre atual
             </th>
             <th>
                 {{$selecao->parametro_de_comparacao}}
