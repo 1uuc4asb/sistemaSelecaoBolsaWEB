@@ -29,29 +29,38 @@
 					
 				// verifica parametro de comparação da seleção definida pelo id.
 				$param = $row1['parametro_de_comparacao'];
-				echo  "Parametro de comparação é ". $param;  //ilustrativo
+				echo  "Parametro de comparação é ". $param; 
 				if($param == "CH") $ext = "CH_cumprida desc;";
 				if($param == "CR") $ext = "CR_atual desc;";
 				if($param == "SEMESTRE") $ext = "semestre_atual desc;";
 					
-				//query da seleção pode ser assim.
-				$select = "select numero_matricula, name, CR_atual, CH_cumprida, semestre_atual from informacoes_candidatos, users, (select * from selecoes_candidatos where selecao_id = '$id') as candidatos where users.id = candidatos.candidato_id and users.id = informacoes_candidatos.usuario_id  order by ". $ext;
+				
+				$select = "select * from selecoes_candidatos where selecao_id = '$aux' order by ". $ext ;
 				$query2 = $db->query($select);
 					
 				echo"<table>
 				<tr>
-				<th>MATRICULA</th>
-				<th>NOME</th>
+				<th>Matricula</th>
+				<th>Nome</th>
 				<th>CR</th>
 				<th>CH</th>
-				<th>SEMESTRE</th>
+				<th>Semestre</th>
 				</tr>";
+				
 				while($row2 = $query2->fetchArray(SQLITE3_ASSOC) ) {
-					$mat = $row2['numero_matricula'];
-					$nome = $row2['name'];
+					
+					$cd = $row2['candidato_id'];
 					$cr = $row2['CR_atual'];
 					$ch = $row2['CH_cumprida'];
 					$sem = $row2['semestre_atual'];
+					
+					$info = "select name, numero_matricula from informacoes_candidatos, users where id = '$cd' and usuario_id = id;";
+					$query3 = $db->query($info);
+					$row3 = $query3->fetchArray(SQLITE3_ASSOC);
+					
+					$mat = $row3['numero_matricula'];
+					$nome = $row3['name'];
+					
 					echo "<tr>
 					<td>$mat</td>
 					<td>$nome</td>
@@ -68,23 +77,6 @@
 		if($check == 0) echo "Seleção não encontrada.";
 	}
 	$db->close();
-   
-/*
-RASCUNHOS
-(select * from selecoes_candidatos where selecao_id = '$id') as candidatos					"candidato_id, CR_atual, CH_cumprida, semestre_atual"
-(select * from selecoes where id = '$id') as parametros										"parametro_de_comparacao"
-select * from informacoes_candidatos;
-
-select informacoes_candidatos.numero_matricula, users.name, candidatos.CR_atual, candidatos.CH_cumprida, candidatos.semestre_atual
-	from informacoes_candidatos,users,(select * from selecoes_candidatos where selecao_id = '$id') as candidatos,(select * from selecoes where id = '$id') as parametros  where users.id = candidatos.candidato_id and users.id = informacoes_candidatos.usuario_id 
-
-	select informacoes_candidatos.numero_matricula, users.name from informacoes_candidatos,users,(select * from selecoes_candidatos where selecao_id = '$id') as candidatos where users.id = candidatos.candidato_id and users.id = informacoes_candidatos.usuario_id 
-*/
-
 ?>
 </body>
 </html>
-
-
-
- 
