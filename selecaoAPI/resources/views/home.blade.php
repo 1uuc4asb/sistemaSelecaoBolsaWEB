@@ -27,14 +27,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($selecoes_criadas as $selecao)
+                            @foreach($selecoes_criadas as $index => $selecao)
                                 <tr>
-                                    <th scope="row"> {{ $selecao->id }} </th>
+                                    <th scope="row"> {{ $index+1 }} </th>
                                     <td> {{ $selecao->nome }} </td>
                                     <td> {{$selecao->getEntradas()}}</td>
                                     <td> {{ \Carbon\Carbon::parse($selecao->data_do_resultado)->format('d/m/Y')}}</td>
                                     <td>
-                                        @if($selecao->isFinished())
+                                        @if(!$selecao->isFinished($selecao->id))
                                             <a class="btn btn-warning"
                                                href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@mostraresultado', ['id' => $selecao->id])}}">
                                                 Resultado parcial </a>
@@ -50,7 +50,7 @@
                         </table>
                     </div>
                     <div class="card">
-                        <div class="card-header"> Todas as Seleções</div>
+                        <div class="card-header"> Outras Seleções</div>
                         <div class="card-body">
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
@@ -68,19 +68,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($selecoes_usuario as $selecao)
+                                @foreach($selecoes_usuario as $index => $selecao)
                                     <tr>
-                                        <th scope="row"> {{ $selecao->id }} </th>
+                                        <th scope="row"> {{ $index+1 }} </th>
                                         <td> {{ $selecao->nome }} </td>
                                         <td> {{$selecao->getEntradas()}}</td>
                                         <td> {{ \Carbon\Carbon::parse($selecao->data_do_resultado)->format('d/m/Y')}}</td>
                                         <td>
                                             @if(App\SelecoesCandidatos::where('selecao_id', $selecao->id)->where('candidato_id', \Illuminate\Support\Facades\Auth::id())->count() == 0
-                                            && $selecao->isFinished())
+                                            && !$selecao->isFinished($selecao->id))
                                                 <a class="btn btn-primary"
                                                    href="{{ route('inscricaoSelecaoShow',$selecao->id) }}">
                                                     Inscrever-se </a>
-                                            @elseif(!$selecao->isFinished())
+                                            @elseif($selecao->isFinished($selecao->id))
                                                 <a class="btn btn-danger"
                                                    href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@mostraresultado', ['id' => $selecao->id])}}">
                                                     Resultado </a>
