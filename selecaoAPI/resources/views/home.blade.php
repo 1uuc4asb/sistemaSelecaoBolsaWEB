@@ -12,7 +12,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        Aqui a listagem das seleções do usuário (dono da seleção) logado. <br/><br/>
+                       
                         <a class="btn btn-primary"
                            href="{{\Illuminate\Support\Facades\URL::action('SelecoesController@renderform')}}"> Criar
                             Seleção </a> <br/> <br/>
