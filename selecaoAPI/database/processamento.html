@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Processamento de Seleções</title>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<script type="text/javascript">
+			function validarForm(form){
+				form.submit();
+			}
+		</script>	
+		
+	</head>
+	<body>
+		<div id="main">
+			<form name="formSelecao" method="post" action="processamento.php" target="tela">
+				<fieldset>
+					<legend>Informe ID da  Seleção</legend>
+					<p>Id: <input type="number" name="id" id="id"/></p>
+					<p><input type="button" value="Enviar" onclick="validarForm(this.form)"/>
+					<input type="reset" value="Limpar"/></p>
+				</fieldset>
+			</form>
+		</div>
+		<iframe name="tela" height="640" width="540"></iframe>
+	</body>
+</html>
