@@ -50,7 +50,11 @@
                         </table>
                     </div>
                     <div class="card">
-                        <div class="card-header"> Outras Seleções</div>
+                        @if(Auth::user()->flag_candidato)
+							<div class="card-header"> Outras Seleções&nbsp;&nbsp;&nbsp;&nbsp;(CANDIDATO) </div>
+						@else
+							<div class="card-header">Outras Seleções&nbsp;&nbsp;&nbsp;&nbsp;(NÃO CANDIDATO)</div>
+						@endif
                         <div class="card-body">
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
