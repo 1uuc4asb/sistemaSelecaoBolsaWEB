@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <a href="{{ url('/home') }}">Home</a>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @if ($errors->any())
