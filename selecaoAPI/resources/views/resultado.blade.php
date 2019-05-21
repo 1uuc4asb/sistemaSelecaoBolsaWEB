@@ -1,8 +1,10 @@
-@extends('layouts.app')
+'@extends('layouts.app')
 
 @section('content')
     <div class="container">
-        <a href="{{ url('/home') }}">Home</a>
+        <div class="form-group">
+            <a class="btn btn-warning" href="{{ url('/home') }}">Voltar</a>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">

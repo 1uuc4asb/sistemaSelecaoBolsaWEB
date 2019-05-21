@@ -127,7 +127,7 @@
             <h2>
                 A forma mais fácil e rápida para se candidatar ou oferecer oportunidades de bolsas de estudo!
             </h2>
-            <h4>Feito por: Alexandre, Gabriel, Guilherme, Lucas e Wilton!</h4>
+            <h4>Feito por: Alexandre, Daniel, Gabriel, Guilherme, Lucas e Wilton!</h4>
             {{--<div align="row">
                 <button>
                     Realizar login
