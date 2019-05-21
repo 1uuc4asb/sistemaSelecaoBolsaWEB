@@ -14,6 +14,10 @@ use Datetime;
 
 class SelecoesController extends Controller
 {
+  /**
+   * Mostra tabela com as seleções
+   * @return \Illuminate\Http\JsonResponse
+   */
     public function index () {
         $selecoes = DB::table('selecoes')
                         ->select(
@@ -64,6 +68,11 @@ class SelecoesController extends Controller
         return response()->json($selecao,200,$headers);
     }
 
+  /**
+   * Salva a seleção em banco
+   * @param Request $request
+   * @return \Illuminate\Http\JsonResponse
+   */
     public function store(Request $request) {
         $headers = ['Content-Type' => 'application/json; charset=UTF-8'];
         $validator = Validator::make($request->all(), [
@@ -126,6 +135,10 @@ class SelecoesController extends Controller
         }
     }
 
+  /**
+   * Retorna o formulário de criação de seleção
+   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   */
     public function renderform(){
         $selecao = new Selecao(['dono_da_selecao' => Auth::id()]);
 
@@ -134,11 +147,18 @@ class SelecoesController extends Controller
         ]);
     }
 
+  /** Retorna a tela com o resultado da seleção
+   * @param $id - id da seleção
+   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   */
     public function mostraresultado($id){
         $selecao = Selecao::findOrFail($id);
         $inscricoes = SelecoesCandidatos::where('selecao_id', $selecao->id)
         ->join('users', 'candidato_id', '=', 'users.id');
 
+      /**
+       * Ordena a lista de selecionados de acordo com o parâmetro de comparação
+       */
         switch($selecao->parametro_de_comparacao){
             case 'CH':{
                 $inscricoes->orderBy('CH_cumprida', 'DESC');

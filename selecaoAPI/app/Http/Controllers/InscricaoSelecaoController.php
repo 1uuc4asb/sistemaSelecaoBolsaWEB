@@ -13,14 +13,14 @@ class InscricaoSelecaoController extends Controller
 {
   public function index()
   {
-    $data = [
-      'mensagem' => 'Para inscrever um candidato em uma seleção você deve informar qual né gênio... Passa o ID da seleção depois do api/inscricaoSelecao.'
-    ];
-
     $headers = ['Content-Type' => 'application/json; charset=UTF-8'];
-    return response()->json($data, 200, $headers);
+    return response()->json(true, 200, $headers);
   }
 
+  /** Retorna o formulário de inscrição em seleção e passa o id para dentro
+   * @param $id - id da seleção
+   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   */
   public function show($id)
   {
     $data = [
@@ -30,6 +30,10 @@ class InscricaoSelecaoController extends Controller
     return view('inscricaoSelecao', $data);
   }
 
+  /** Salva a inscrição na seleção em banco
+   * @param Request $request
+   * @return \Illuminate\Http\RedirectResponse
+   */
   public function store(Request $request)
   {
     $inscricao = $request->all();
@@ -51,6 +55,11 @@ class InscricaoSelecaoController extends Controller
     }
   }
 
+  /** Valida o formulário
+   * @param $data
+   * @param $user
+   * @return mixed
+   */
   public function validarFormulario($data, $user)
   {
     return Validator::make($data, ['CR' => 'required|numeric',
