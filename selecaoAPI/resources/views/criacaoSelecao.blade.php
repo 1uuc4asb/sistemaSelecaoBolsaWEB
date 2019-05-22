@@ -37,11 +37,11 @@
                                         <label for="">Critério</label>
                                         <div class="radio">
                                             <label class="radio-inline">
-                                                <input type="radio" name="parametro_de_comparacao" value="CR" @if(old('parametro_de_comparacao')) checked @endif> CH - Carga Horária
-                                            </label>
+                                                <input type="radio" name="parametro_de_comparacao" value="CH" @if(old('parametro_de_comparacao')) checked @endif> CH - Carga Horária
+                                            </label><br>
                                             <label class="radio-inline">
-                                                <input type="radio" name="parametro_de_comparacao" value="CH" @if(old('parametro_de_comparacao')) checked @endif> CR - Coeficiente de Rendimento
-                                            </label>
+                                                <input type="radio" name="parametro_de_comparacao" value="CR" @if(old('parametro_de_comparacao')) checked @endif> CR - Coeficiente de Rendimento
+                                            </label><br>
                                             <label class="radio-inline">
                                                 <input type="radio" name="parametro_de_comparacao" value="SEMESTRE" @if(old('parametro_de_comparacao')) checked @endif> Semestre Atual
                                             </label>
