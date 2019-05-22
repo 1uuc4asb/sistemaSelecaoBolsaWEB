@@ -16,7 +16,7 @@
             </div>
         @endif
         <div class="row justify-content-center">
-            <!--o lavavel não tá configurado pra suportar post. como os formulários serão enviados???-->
+            
             <form name="formInscricaoSelecao" method="POST" action="{{ url('inscricaoSelecao') }}">
                 @csrf
                 <div class="form-group">
@@ -43,7 +43,7 @@
                     <input type="reset" class="btn btn-primary" value="Limpar">
                 </div>
             </form>
-            <!-- validação básica do formulário -->
+           
         </div>
     </div>
 @endsection
